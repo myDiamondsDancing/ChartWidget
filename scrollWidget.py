@@ -13,8 +13,8 @@ class ScrollWidget(QWidget):
         self.loadFields()
 
     def initUi(self):
-    '''|initUi(self)
-       |private method : inits user interface in widget'''
+        '''|initUi(self)
+         |private method : inits user interface in widget'''
         self.layoutV = QVBoxLayout(self)
 
         self.area = QScrollArea(self)
@@ -32,17 +32,17 @@ class ScrollWidget(QWidget):
         pass
         
     def loadFields(self):
-    '''|loadFields(self)
-       |private method : loads local fields(listOfWidgets, theme, toolTips)'''
+        '''|loadFields(self)
+         |private method : loads local fields(listOfWidgets, theme, toolTips)'''
         self.listOfWidgets = list()
         self.theme = 0      
         self.toolTips = True
 
     def setTheme(self, theme):    
-    '''|setTheme(self, flag)
-       |flag : (0, 1, 2) 
-       |public method : sets theme for widgets in scrollArea
-       |setTheme(theme) >>> None '''       
+        '''|setTheme(self, flag)
+         |flag : (0, 1, 2) 
+         |public method : sets theme for widgets in scrollArea
+         |setTheme(theme) >>> None '''       
         if theme == 0:
             self.setLightTheme()
             self.theme = 0
@@ -54,30 +54,30 @@ class ScrollWidget(QWidget):
             self.theme = 2
             
     def setLightTheme(self):
-    '''|setLightTheme(self)
-       |private method : sets light theme for widgets in scrollArea'''        
+        '''|setLightTheme(self)
+         |private method : sets light theme for widgets in scrollArea'''        
         self.setStyleSheet("background : rgb(238, 238, 238)")
         for widget in self.listOfWidgets:
             widget.setTheme(0)
 
     def setGrayTheme(self):
-    '''|setGrayTheme(self)
-       |private method : sets gray theme for widgets in scrollArea'''        
+        '''|setGrayTheme(self)
+          private method : sets gray theme for widgets in scrollArea'''        
         self.setStyleSheet("background : rgb(176, 176, 176)")
         for widget in self.listOfWidgets:
             widget.setTheme(1)
 
     def setDarkTheme(self):
-    '''|setDarkTheme(self)
-       |private method : sets dark theme for widgets in scrollArea'''    
+        '''|setDarkTheme(self)
+         |private method : sets dark theme for widgets in scrollArea'''    
         self.setStyleSheet("background : rgb(103, 103, 103)")
         for widget in self.listOfWidgets:
             widget.setTheme(2)            
             
     def addWidget(self):
-    '''|addWidget(self)
-       |public method : adds chartSettingsWidget to scrollArea
-       |addWidget >>> None'''       
+        '''|addWidget(self)
+         |public method : adds chartSettingsWidget to scrollArea
+         |addWidget >>> None'''       
         widget = ChartSettingsWidget()                           # Adding new widget
         self.gridLayout.addWidget(widget)
         self.listOfWidgets.append(widget)         # For getting results and changing theme
@@ -86,9 +86,9 @@ class ScrollWidget(QWidget):
               
 
     def deleteWidget(self, widget):
-    '''|deleteWidget(self, widget)
-       |widget : chartSettingsWidget
-       |private method : deletes widget from scrollArea(connected with deleteButton on each chartSettingsWidget)'''
+        '''|deleteWidget(self, widget)
+         |widget : chartSettingsWidget
+         |private method : deletes widget from scrollArea(connected with deleteButton on each chartSettingsWidget)'''
         self.listOfWidgets.remove(widget)
         self.gridLayout.removeWidget(widget)
         sip.delete(widget)
