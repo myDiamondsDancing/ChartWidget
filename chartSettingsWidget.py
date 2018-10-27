@@ -13,8 +13,8 @@ class ChartSettingsWidget(QWidget):
         self.setToolTips(True)
      
     def initUi(self):
-    '''|initUi(self)
-       |private method : loads interface of widget'''
+        '''|initUi(self)
+           |private method : loads interface of widget'''
         self.xLabel = QLabel('X:')
         
         self.xMinBox = QSpinBox(self)
@@ -91,21 +91,21 @@ class ChartSettingsWidget(QWidget):
         self.setLayout(self.mainLayout)
             
     def connectUi(self):
-    '''|connectUi(self)
-       |private method : connects all signals with private methods'''
+        '''|connectUi(self)
+           |private method : connects all signals with private methods'''
         self.colorButton.clicked.connect(self.chooseColor)
         self.xMaxBox.valueChanged.connect(self.changedValueInMaxBox)
         self.xMinBox.valueChanged.connect(self.changedValueInMinBox)
         
     def loadFields(self):
-    '''|loadFields(self)
-       |private method : loads local fields(color, theme)''' 
+        '''|loadFields(self)
+           |private method : loads local fields(color, theme)''' 
         self.color = 'blue'
         self.theme = 0
         
     def chooseColor(self): 
-    '''|chooseColor(self)
-       |private method : chooses chart's color(connected with colorButton's click)'''
+        '''|chooseColor(self)
+           |private method : chooses chart's color(connected with colorButton's click)'''
         dialog = QColorDialog(self)
         dialog.setCurrentColor(QColor(self.color))  
 
@@ -114,18 +114,18 @@ class ChartSettingsWidget(QWidget):
             self.color =  dialog.currentColor().name()
 
     def changedValueInMinBox(self):
-    ''' If minimum of x is greater than maximum of x(connected with xMinBox.valueChanged)'''
+        
         if self.xMinBox.value() > self.xMaxBox.value():
             self.xMaxBox.setValue(self.xMinBox.value() + 1)
 
     def changedValueInMaxBox(self): 
-    '''If maximum ofx is smaller than minimum of x(connected with xMaxBox.valueChanged)'''
+        
         if self.xMinBox.value() > self.xMaxBox.value():
             self.xMinBox.setValue(self.xMaxBox.value() - 1)       
 
     def setLightTheme(self):          
-    '''|setLightTheme(self)
-       |private method : sets light theme for widget'''
+        '''|setLightTheme(self)
+           |private method : sets light theme for widget'''
         _translate = QCore.QCoreApplication.translate
         self.setStyleSheet("background : rgb(238, 238, 238);")
         self.xMaxBox.setStyleSheet("background : rgb(252, 252, 252)")
@@ -138,8 +138,8 @@ class ChartSettingsWidget(QWidget):
         self.fmtBox.setStyleSheet("background : rgb(252, 252, 252)")
             
     def setGrayTheme(self):    
-    '''|setGrayTheme(self)
-       |private method : sets gray theme for widget'''
+        '''|setGrayTheme(self)
+           |private method : sets gray theme for widget'''
         _translate = QCore.QCoreApplication.translate    
         self.setStyleSheet("background : rgb(176, 176, 176);")
         self.xMaxBox.setStyleSheet("background : rgb(232, 232, 232);")
@@ -152,8 +152,8 @@ class ChartSettingsWidget(QWidget):
         self.chartLegendLabel.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#000000;\">Chart legend</span></p></body></html>"))         
 
     def setDarkTheme(self): 
-    '''|setDarkTheme(self)
-       |private method : sets dark theme for widget'''
+        '''|setDarkTheme(self)
+           |private method : sets dark theme for widget'''
         _translate = QCore.QCoreApplication.translate    
         self.setStyleSheet("background : rgb(103, 103, 103);")
         self.xMaxBox.setStyleSheet("background : rgb(182, 182, 182);")
@@ -166,18 +166,18 @@ class ChartSettingsWidget(QWidget):
         self.chartLegendLabel.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ececec;\">Chart legend</span></p></body></html>"))   
         
     def setToolTips(self, flag):
-    '''|setToolTips(self, flag)
-       |flag : True, False 
-       |public method : on or off tooltips
-       |setToolTips(flag) >>> None'''
+        '''|setToolTips(self, flag)
+           |flag : True, False 
+           |public method : on or off tooltips
+           |setToolTips(flag) >>> None'''
         if flag is True:
               self.onToolTips()
         else:
               self.deleteToolTips()        
         
     def onToolTips(self):
-    '''|onToolTips(self)
-       |private method : set tooltips for all widgets'''
+        '''|onToolTips(self)
+           |private method : set tooltips for all widgets'''
         _translate = QCore.QCoreApplication.translate
         self.colorButton.setToolTip(_translate("self", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Color of chart</span></p></body></html>"))
         self.xMinBox.setToolTip(_translate("self", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Minimum of X</span></p></body></html>"))
@@ -186,8 +186,8 @@ class ChartSettingsWidget(QWidget):
         self.funcEdit.setToolTip(_translate("self", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Enter your function</span></p></body></html>"))    
         
     def deleteToolTips(self):        
-    '''|deleteToolTips(self)
-       |private method : deletes tooltips for all widgets'''
+        '''|deleteToolTips(self)
+           |private method : deletes tooltips for all widgets'''
         self.colorButton.setToolTip("")
         self.xMinBox.setToolTip("")
         self.xMaxBox.setToolTip("")
@@ -195,10 +195,10 @@ class ChartSettingsWidget(QWidget):
         self.funcEdit.setToolTip("")
         
     def setTheme(self, flag):        
-    '''|setTheme(self, flag)
-       |flag : (0, 1, 2) 
-       |public method : sets theme for widget
-       |setTheme(theme) >>> None '''
+        '''|setTheme(self, flag)
+           |flag : (0, 1, 2) 
+           |public method : sets theme for widget
+           |setTheme(theme) >>> None '''
         if flag == 0:
             self.setLightTheme()
             self.theme = 0
@@ -210,9 +210,9 @@ class ChartSettingsWidget(QWidget):
             self.theme = 2        
       
     def results(self):
-    '''|results(self)
-       |public method : returns all chart's settings for parent widget
-       |results() >>> (xMin, xMax, func, legend, fmt, color) '''
+        '''|results(self)
+           |public method : returns all chart's settings for parent widget
+           |results() >>> (xMin, xMax, func, legend, fmt, color) '''
         xMin = self.xMinBox.value()
         xMax = self.xMaxBox.value()
         
@@ -224,4 +224,4 @@ class ChartSettingsWidget(QWidget):
         
         func = self.funcEdit.text()
 
-        return (xMin, xMax, func, legend, fmt, color)   
+        return (xMin, xMax, func, legend, fmt, color) 
