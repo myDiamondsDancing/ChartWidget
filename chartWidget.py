@@ -1,7 +1,7 @@
 import sys
 import sip
 
-import numpy as np
+from numpy import *
 
 from PyQt5.Qt import *
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
@@ -68,7 +68,7 @@ class ChartWidget(QWidget):
         i = 1
         for widget in self.area.listOfWidgets:
             xMin, xMax, func, label, format, color = widget.results()
-            x = np.linspace(xMin, xMax, (xMax - xMin * 1000))
+            x = linspace(xMin, xMax, (xMax - xMin * 1000))
             try:
                 y = eval(func)
             except Exception as ex:
@@ -76,7 +76,11 @@ class ChartWidget(QWidget):
                 return False
             try:
                 ax.plot(x, y, label=label, color=color, linestyle=format)
-                ax.legend(loc='best')               
+                ax.legend(loc='best') 
+                ax.spines['bottom'].set_position('center')
+                ax.spines['left'].set_position('center')           
+                ax.spines['right'].set_position('center')    
+                ax.spines['top'].set_position('center')                   
                 self.canvas.draw()
             except Exception as ex:
                 self.showDialog('Error of ploting (widget{0})\n{1}'.format(i, ex))
