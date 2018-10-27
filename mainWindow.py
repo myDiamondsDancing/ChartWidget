@@ -73,4 +73,4 @@ class MainWindow(QMainWindow):
 app = QApplication(sys.argv)
 w = MainWindow()
 w.show()
-app.exec()         
+app.exec()  
