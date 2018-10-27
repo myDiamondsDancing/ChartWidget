@@ -76,6 +76,7 @@ class ChartWidget(QWidget):
                 return False
             try:
                 ax.plot(x, y, label=label, color=color)
+                ax.legend(loc='best')
                 self.canvas.draw()
             except Exception as ex:
                 self.showDialog('Error of ploting (widget{0})'.format(i))
