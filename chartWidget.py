@@ -75,11 +75,11 @@ class ChartWidget(QWidget):
                 self.showDialog('Error of function(widget {0})'.format(i))
                 return False
             try:
-                ax.plot(x, y, label=label, color=color)
-                ax.legend(loc='best')
+                ax.plot(x, y, label=label, color=color, linestyle=format)
+                ax.legend(loc='best')               
                 self.canvas.draw()
             except Exception as ex:
-                self.showDialog('Error of ploting (widget{0})'.format(i))
+                self.showDialog('Error of ploting (widget{0})\n{1}'.format(i, ex))
                 return False 
             i += 1  
         return True            
@@ -123,6 +123,6 @@ class ChartWidget(QWidget):
         dlg = QMessageBox(self)
         dlg.setText(text)
         dlg.setIcon(QMessageBox.Critical)
-        dlg.show()            
+        dlg.show()                 
             
        
